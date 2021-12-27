@@ -20,6 +20,9 @@ jobs:
     needs: build-app
     runs-on: ubuntu-latest
     steps:
+      - name: GitHub Checkout
+        uses: actions/checkout@v2
+
       - name: Vercel Deployment
         uses: amondnet/vercel-action@v20.0.0
         with:
