@@ -10,12 +10,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
 
-      - name: Install node_modules/
-        run: yarn
-
-      - name: Build Project
-        run: yarn build
-
       - name: Vercel Deployment
         uses: amondnet/vercel-action@v20.0.0
         with:
