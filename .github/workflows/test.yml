@@ -4,11 +4,22 @@ jobs:
   build-app:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Install node_modules
+      - name: GitHub Checkout 
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+
+      - name: Install node_modules/
         run: yarn
-      - name: Build the project
+
+      - name: Build Project
         run: yarn build
-      - name: Success message
-        run: echo 'Done and dusted...'
+
+      - name: Vercel Deployment
+        uses: amondnet/vercel-action@v20.0.0
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}
