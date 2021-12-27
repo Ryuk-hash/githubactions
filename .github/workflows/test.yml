@@ -1,7 +1,14 @@
 name: GitHub Action
 on: [push]
 jobs:
-  print-job:
+  build-app:
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo hello world!'
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Install node_modules
+        run: npm install
+      - name: Build the project
+        run: npm run build
+      - name: Success message
+        run: echo 'Done and dusted...'
