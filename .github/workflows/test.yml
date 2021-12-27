@@ -20,7 +20,7 @@ jobs:
 
       - name: Data Sharing (to next jobs)
         id: dataSharing
-        run: echo "::set-output name=text::'hello world lol.'"
+        run: echo "::set-output name=text::hello world lol."
 
   deploy:
     needs: buildApp
@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Consume shared data
         run: echo $JOB_OUTPUT
+
       - name: GitHub Checkout
         uses: actions/checkout@v2
 
